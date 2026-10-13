@@ -1,0 +1,269 @@
+/* ==========================================================================
+   MNHS Grand Alumni Homecoming — Design tokens
+   Source of truth: /design-system.md. Tokens only: no selectors other than
+   :root, and no rules. Component and page CSS must use these variables.
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. Colors (design-system §1)
+     Text and border colors are paper (#F4ECE0) at reduced opacity, so they
+     blend warmly over ink, surfaces, and images.
+     ------------------------------------------------------------------------ */
+  --color-bg: #0E0A07;                          /* page background ("ink") */
+  --color-surface: #1A130D;                     /* cards, countdown cells, panels */
+  --color-bg-deep: #050302;                     /* footer background */
+
+  --color-text: #F4ECE0;                        /* headings, primary text ("paper") */
+  --color-text-muted: rgba(244, 236, 224, .70); /* body copy, nav links (≈ #AFA89F, 8.4:1) */
+  --color-text-subtle: rgba(244, 236, 224, .55);/* micro labels, footer links (≈ #8C867E, 5.5:1) */
+
+  --color-primary: #E9B775;                     /* gold: CTAs, eyebrows, accent word */
+  --color-primary-deep: #C8924A;                /* pressed gold */
+  --color-on-primary: #0E0A07;                  /* text/icons on gold */
+  --color-accent: #B8645B;                      /* rose: rare small highlights only */
+
+  --color-border: rgba(244, 236, 224, .12);     /* hairlines (decorative) */
+  --color-border-strong: rgba(244, 236, 224, .25); /* ghost buttons, hover borders */
+  --color-border-gold: rgba(233, 183, 117, .25);/* card hover border */
+
+  --color-primary-tint: rgba(233, 183, 117, .08); /* checked radio pill background */
+  --color-error: #D98A80;                       /* form errors: lifted rose (≈ 6.9:1 on surface) */
+
+  --color-overlay: rgba(14, 10, 7, .82);        /* scrolled navbar background */
+  --color-scrim: rgba(14, 10, 7, .65);          /* mobile menu backdrop */
+
+  /* Hero image scrims */
+  --gradient-scrim-top: linear-gradient(180deg, rgba(14, 10, 7, .65) 0%, rgba(14, 10, 7, 0) 100%);
+  --gradient-scrim-bottom: linear-gradient(0deg, rgba(14, 10, 7, .95) 0%, rgba(14, 10, 7, .40) 50%, rgba(14, 10, 7, 0) 100%);
+
+  /* Soft ink tint behind the centered hero text; hero.png's bright wall
+     otherwise drops the eyebrow and date line below WCAG AA */
+  --gradient-scrim-center: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(14, 10, 7, .70) 0%, rgba(14, 10, 7, 0) 100%);
+
+  /* Available, not default */
+  --gradient-wine: linear-gradient(135deg, #5A1F1A 0%, #2A0E0C 100%);
+  --gradient-section-fade: linear-gradient(180deg, #0E0A07 0%, #150E09 100%);
+
+  /* ------------------------------------------------------------------------
+     2. Typography (design-system §2)
+     Google Fonts: paste into the <head> of every page.
+       <link rel="preconnect" href="https://fonts.googleapis.com">
+       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+     ------------------------------------------------------------------------ */
+  --font-serif: "Cormorant", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* Fixed sizes */
+  --fs-2xs: 10px;      /* micro labels, countdown units */
+  --fs-xs: 11px;       /* eyebrow (mobile), card dates, small buttons, legal */
+  --fs-sm: 12px;       /* eyebrow, meta labels */
+  --fs-sm-plus: 13px;  /* footer headings, mobile buttons */
+  --fs-md: 14px;       /* nav links, card text */
+  --fs-md-plus: 15px;  /* footer links, hero CTA */
+  --fs-base: 16px;     /* body, buttons */
+  --fs-lg: 18px;       /* body large */
+  --fs-xl: 22px;       /* values (mobile), schedule times */
+  --fs-2xl: 26px;      /* drawer links, card title (mobile) */
+  --fs-3xl: 28px;      /* card titles */
+  --fs-4xl: 32px;      /* panel titles */
+
+  /* Fluid sizes */
+  --fs-display: clamp(48px, min(7vw, 11vh), 104px); /* hero h1; also shrinks on short screens */
+  --fs-h1: clamp(48px, 6vw, 88px);         /* page title, ≥641 */
+  --fs-h1-sm: clamp(40px, 10vw, 64px);     /* page title, <641 */
+  --fs-h2: clamp(40px, 5vw, 72px);         /* section heading, ≥641 */
+  --fs-h2-sm: clamp(32px, 9vw, 56px);      /* section heading, <641 */
+  --fs-lead: clamp(32px, 4vw, 56px);       /* pull quote */
+  --fs-countdown: clamp(48px, 8vw, 96px);  /* boxed countdown numerals [est.] */
+  --fs-countdown-compact: clamp(32px, 4vw, 48px); /* hero countdown numerals, "ended" line */
+  --fs-date-lockup: clamp(96px, 20vw, 176px); /* program date lockup "30" */
+
+  /* Line heights */
+  --lh-tight: 1;
+  --lh-heading: 1.05;
+  --lh-snug: 1.2;
+  --lh-lead: 1.25;      /* lead / pull quote */
+  --lh-base: 1.55;
+  --lh-relaxed: 1.7;
+
+  /* Letter spacing */
+  --ls-tight: -0.015em;  /* display, h1, h2 */
+  --ls-snug: -0.01em;    /* h3, lead */
+  --ls-nav: 0.18em;      /* nav links, nav CTA, legal */
+  --ls-button: 0.2em;    /* buttons */
+  --ls-label: 0.26em;    /* card dates, meta labels */
+  --ls-micro: 0.3em;     /* countdown units, micro labels */
+  --ls-eyebrow: 0.32em;  /* eyebrows, footer headings */
+  --ls-countdown-ended: 0.08em; /* "The celebration is here" */
+
+  /* Weights */
+  --fw-light: 300;       /* all serif headings */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;    /* buttons, footer headings */
+
+  --font-feature-tnum: "tnum" 1; /* tabular figures: countdown, times */
+
+  /* ------------------------------------------------------------------------
+     3a. Spacing (design-system §3, normalized scale [est.])
+     ------------------------------------------------------------------------ */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 56px;
+  --space-11: 64px;
+  --space-12: 80px;
+  --space-13: 96px;
+  --space-14: 120px;
+
+  /* ------------------------------------------------------------------------
+     3b. Radius
+     ------------------------------------------------------------------------ */
+  --radius-xs: 2px;      /* bars, dots */
+  --radius-sm: 4px;      /* default: cards, panels, cells, images */
+  --radius-md: 8px;      /* large media frames */
+  --radius-lg: 10px;     /* modals */
+  --radius-pill: 999px;  /* all buttons */
+
+  /* ------------------------------------------------------------------------
+     3c. Borders and focus
+     ------------------------------------------------------------------------ */
+  --border-hairline: 1px;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+
+  --opacity-disabled: .25;  /* disabled buttons */
+
+  /* ------------------------------------------------------------------------
+     3d. Shadows (flat by default; shadows only on hover/floating layers)
+     ------------------------------------------------------------------------ */
+  --shadow-card-hover: 0 16px 40px rgba(0, 0, 0, .4);
+  --shadow-raised: 0 20px 48px rgba(0, 0, 0, .45);
+  --shadow-gold: 0 12px 32px rgba(233, 183, 117, .35);
+  --shadow-gold-soft: 0 4px 24px rgba(233, 183, 117, .35);
+  --shadow-modal: 0 32px 80px rgba(0, 0, 0, .7);
+  --shadow-text: 0 4px 32px rgba(0, 0, 0, .6);   /* hero h1 over image */
+
+  /* ------------------------------------------------------------------------
+     3e. Motion (all disabled under prefers-reduced-motion in base.css)
+     ------------------------------------------------------------------------ */
+  --ease-out: cubic-bezier(.2, .7, .2, 1);
+  --dur-fast: .2s;       /* color, small lifts */
+  --dur-base: .3s;       /* borders, shadows */
+  --dur-slow: .4s;       /* nav background, drawer */
+  --dur-slower: .6s;     /* image zoom */
+  --dur-reveal: 1.4s;    /* reveal on scroll */
+
+  --lift-sm: -1px;       /* button hover translateY */
+  --lift-md: -3px;       /* card hover translateY */
+  --arrow-shift: 4px;    /* arrow glyph hover translateX */
+  --reveal-distance: 24px;
+  --reveal-blur: 12px;
+  --zoom-media: 1.04;   /* card image hover scale */
+
+  /* ------------------------------------------------------------------------
+     3f. Z-index
+     ------------------------------------------------------------------------ */
+  --z-nav: 100;
+  --z-overlay: 199;
+  --z-drawer: 200;
+  --z-modal: 1000;
+
+  /* ------------------------------------------------------------------------
+     4. Layout (design-system §4)
+     ------------------------------------------------------------------------ */
+  --container-max: 1280px;  /* max content width (gutters are added outside) */
+  --measure: 34em;          /* max width for prose [est.] */
+  --countdown-max: 880px;   /* countdown grid max width [est.] */
+
+  /* Program section (design-system §5.7) */
+  --rule-accent-w: 48px;                 /* short gold accent line */
+  --rule-accent-h: 2px;
+  --timeline-dot: 8px;                   /* timeline dot diameter */
+  --timeline-dot-ring: 4px;              /* halo around the finale dot */
+  --lockup-slash-h: calc(var(--fs-date-lockup) * .8); /* date lockup diagonal */
+  --lockup-slash-angle: 20deg;
+  --program-sticky-top: calc(var(--nav-height) + var(--space-8)); /* sticky aside offset */
+
+  /* Forms (design-system §5.9–5.11) */
+  --panel-max: 560px;                    /* RSVP form panel max width */
+  --field-height: 48px;                  /* inputs and radio pills: touch target */
+  --choice-indicator: 16px;              /* ring inside each radio pill */
+
+  /* Responsive layout tokens: mobile values here, overridden below.
+     Use these (not the raw scale) for page gutters and section rhythm. */
+  --gutter: var(--space-5);              /* 20px */
+  --section-pad-y: var(--space-11);      /* 64px */
+  --section-head-gap: var(--space-6);    /* 24px: heading block → content [est.] */
+  --nav-height: calc(var(--nav-pad-y-scrolled) * 2 + var(--burger-size)); /* = bar height under 981 (64 / 68px) */
+  --h1-size: var(--fs-h1-sm);
+  --h2-size: var(--fs-h2-sm);
+
+  /* ------------------------------------------------------------------------
+     4b. Navbar (design-system §5.1)
+     Responsive: mobile values here, overridden at --bp-sm and --bp-md below.
+     ------------------------------------------------------------------------ */
+  --nav-pad-y: var(--space-3);           /* 12px; bar over the hero */
+  --nav-pad-x: var(--space-4);           /* 16px */
+  --nav-pad-y-scrolled: var(--space-3);  /* 12px; bar after scrolling */
+  --nav-cta-pad: var(--space-2) 14px;    /* RSVP pill padding, 8 × 14px */
+  --ls-nav-cta-sm: 0.12em;               /* RSVP pill tracking under 641px */
+
+  --blur-nav: 20px;                      /* scrolled bar backdrop blur */
+  --blur-scrim: 4px;                     /* drawer backdrop blur */
+  --color-drawer: rgba(14, 10, 7, .98);  /* drawer: ink at 98% */
+  --drawer-width: min(300px, 85vw);
+
+  --burger-size: 40px;                   /* menu toggle hit area */
+  --burger-bar-w: 22px;
+  --burger-bar-h: 2px;
+  --burger-bar-gap: 6px;
+
+  /* ------------------------------------------------------------------------
+     5. Breakpoints (mobile-first, min-width)
+     CSS variables cannot be used inside @media conditions. These tokens are
+     the documented values; every media query writes the literal number with
+     a comment naming the token, e.g. "@media (min-width: 981px)" preceded
+     by the comment "--bp-md".
+     ------------------------------------------------------------------------ */
+  --bp-sm: 641px;    /* large phones and tablets */
+  --bp-md: 981px;    /* desktop: full nav, multi-column */
+  --bp-lg: 1280px;   /* container reaches max width */
+  --bp-tall: 800px;  /* min viewport height for sticky columns (min-height query) */
+}
+
+/* --bp-sm */
+@media (min-width: 641px) {
+  :root {
+    --gutter: var(--space-6);            /* 24px */
+    --section-pad-y: var(--space-12);    /* 80px */
+    --section-head-gap: var(--space-8);  /* 40px */
+    --h1-size: var(--fs-h1);
+    --h2-size: var(--fs-h2);
+    --nav-pad-y: 14px;
+    --nav-pad-x: var(--space-5);         /* 20px */
+    --nav-pad-y-scrolled: 14px;
+    --nav-cta-pad: 10px var(--space-5);  /* 10 × 20px */
+  }
+}
+
+/* --bp-md */
+@media (min-width: 981px) {
+  :root {
+    --gutter: var(--space-11);           /* 64px */
+    --section-pad-y: var(--space-14);    /* 120px */
+    --section-head-gap: var(--space-9);  /* 48px */
+    --nav-height: 72px;                  /* scrolled bar is 64px; +8px breathing room */
+    --nav-pad-y: 22px;
+    --nav-pad-x: var(--space-9);         /* 48px */
+    --nav-pad-y-scrolled: 14px;
+  }
+}

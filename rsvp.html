@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RSVP · Alumni Kumustahay · MNHS 60th Anniversary Grand Homecoming</title>
+  <meta name="description" content="Kindly respond by December 20, 2026: let us know if you'll be joining Alumni Kumustahay, the MNHS 60th Anniversary Grand Homecoming, on December 30, 2026.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- ===================================================== Header (§5.1) -->
+  <header class="site-header" data-site-header>
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html#home">
+        <img src="assets/images/mnhs_logo.png" alt="MNHS logo" width="508" height="491">
+      </a>
+
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list" role="list">
+          <li><a class="site-nav__link" href="index.html#home">Home</a></li>
+          <li><a class="site-nav__link" href="index.html#program">Program</a></li>
+          <li><a class="site-nav__link" href="index.html#announcements">Announcements</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a class="btn btn--primary site-header__cta" href="rsvp.html" aria-current="page">RSVP</a>
+        <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-drawer" data-nav-toggle>
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+          <span class="nav-toggle__bar" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile drawer: a sibling of the header, not a child (see components.css §5.1) -->
+  <nav class="nav-drawer" id="nav-drawer" aria-label="Primary">
+    <ul role="list">
+      <li class="nav-drawer__item"><a class="nav-drawer__link" href="index.html#home">Home</a></li>
+      <li class="nav-drawer__item"><a class="nav-drawer__link" href="index.html#program">Program</a></li>
+      <li class="nav-drawer__item"><a class="nav-drawer__link" href="index.html#announcements">Announcements</a></li>
+    </ul>
+    <a class="btn btn--primary nav-drawer__cta" href="rsvp.html" aria-current="page">RSVP</a>
+  </nav>
+  <div class="nav-scrim" data-nav-scrim></div>
+
+  <main>
+    <!-- ================================================== RSVP (§5.11) -->
+    <section class="rsvp" aria-labelledby="rsvp-title">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <p class="eyebrow">Alumni Kumustahay · <time datetime="2026-12-30">December 30, 2026</time></p>
+          <h1 id="rsvp-title">Kindly <em>Respond</em></h1>
+          <p class="section-head__intro">Please let us know if you’ll be joining us by <time datetime="2026-12-20">December 20, 2026</time>.</p>
+        </div>
+
+        <!-- js/rsvp.js swaps this panel's contents: form → thank-you, or → closed message after RSVP_DEADLINE -->
+        <div class="rsvp-panel" data-rsvp>
+          <form class="form" novalidate data-rsvp-form>
+
+            <div class="field">
+              <label class="field__label" for="rsvp-name">Full Name</label>
+              <input class="field__input" id="rsvp-name" name="fullName" type="text" autocomplete="name" required>
+              <p class="field__error" id="rsvp-name-error" hidden></p>
+            </div>
+
+            <fieldset class="field choices">
+              <legend class="field__label">Will you be attending?</legend>
+              <div class="choices__options">
+                <label class="choice">
+                  <input class="choice__input" type="radio" name="attending" value="Yes" required>
+                  <span class="choice__indicator" aria-hidden="true"></span>
+                  <span class="choice__text">Joyfully accepts</span>
+                </label>
+                <label class="choice">
+                  <input class="choice__input" type="radio" name="attending" value="No">
+                  <span class="choice__indicator" aria-hidden="true"></span>
+                  <span class="choice__text">Regretfully declines</span>
+                </label>
+              </div>
+              <p class="field__error" id="rsvp-attending-error" hidden></p>
+            </fieldset>
+
+            <!-- Shown only when "Joyfully accepts" is selected -->
+            <div class="field" hidden data-rsvp-companions>
+              <label class="field__label" for="rsvp-companions">Number of Companions</label>
+              <p class="field__hint" id="rsvp-companions-hint">Not counting yourself, up to 5.</p>
+              <input class="field__input field__input--short" id="rsvp-companions" name="companions" type="number" inputmode="numeric" min="0" max="5" step="1" value="0" aria-describedby="rsvp-companions-hint">
+              <p class="field__error" id="rsvp-companions-error" hidden></p>
+            </div>
+
+            <!-- Honeypot: hidden from people and assistive tech; bots fill it -->
+            <div class="visually-hidden" aria-hidden="true">
+              <label for="rsvp-website">Website</label>
+              <input id="rsvp-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="form__actions">
+              <p class="form__alert" role="alert" hidden data-rsvp-alert></p>
+              <button class="btn btn--primary form__submit" type="submit" data-rsvp-submit>
+                <span data-rsvp-submit-label>Send RSVP</span>
+                <span class="btn__arrow" aria-hidden="true" data-rsvp-submit-arrow>→</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================== Footer (§5.8) -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <a class="site-footer__logo" href="index.html#home">
+            <img src="assets/images/mnhs_logo.png" alt="MNHS logo" width="508" height="491" loading="lazy">
+          </a>
+          <p class="site-footer__blurb">MNHS 60th Anniversary Grand Alumni Homecoming · December 30, 2026 · Mantalongon National High School, Sua Campus, Dalaguete, Cebu</p>
+        </div>
+
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Explore</h2>
+          <ul class="site-footer__links" role="list">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#program">Program</a></li>
+            <li><a href="index.html#announcements">Announcements</a></li>
+            <li><a href="rsvp.html" aria-current="page">RSVP</a></li>
+          </ul>
+        </div>
+
+        <div class="site-footer__col">
+          <h2 class="site-footer__heading">Connect</h2>
+          <!-- [PLACEHOLDER] replace with the real page and contact details -->
+          <ul class="site-footer__links" role="list">
+            <li><a href="#">[FACEBOOK PAGE]</a></li>
+            <li><a href="#">[CONTACT EMAIL]</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__baseline">
+        <p>© 2026 MNHS Grand Alumni Homecoming</p>
+        <a href="#">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+  <script src="js/rsvp.js" defer></script>
+</body>
+</html>

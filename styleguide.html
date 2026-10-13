@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Dev-only page: not linked from the site, not for indexing -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Styleguide · MNHS Homecoming</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <!-- Styleguide chrome only (sg-*). Tokens only, like everything else. -->
+  <style>
+    .sg-intro {
+      padding-block: var(--space-9) var(--space-7);
+      border-bottom: var(--border-hairline) solid var(--color-border);
+    }
+
+    .sg-intro h1 {
+      font-family: var(--font-sans);
+      font-size: var(--fs-base);
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-eyebrow);
+      text-transform: uppercase;
+      line-height: var(--lh-snug);
+    }
+
+    .sg-intro p {
+      max-width: var(--measure);
+      margin-top: var(--space-3);
+      font-size: var(--fs-md);
+      line-height: var(--lh-relaxed);
+      color: var(--color-text-muted);
+    }
+
+    .sg-block {
+      padding-block: var(--space-11);
+      border-bottom: var(--border-hairline) solid var(--color-border);
+    }
+
+    .sg-label {
+      margin-bottom: var(--space-7);
+      font-family: var(--font-sans);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-medium);
+      letter-spacing: var(--ls-label);
+      line-height: var(--lh-snug);
+      text-transform: uppercase;
+      color: var(--color-text-subtle);
+    }
+
+    .sg-label code {
+      font-size: var(--fs-xs);
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--color-text-muted);
+    }
+
+    .sg-sub {
+      margin-block: var(--space-8) var(--space-4);
+      font-family: var(--font-sans);
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-medium);
+      letter-spacing: var(--ls-label);
+      line-height: var(--lh-snug);
+      text-transform: uppercase;
+      color: var(--color-text-subtle);
+    }
+
+    .sg-sub:first-of-type {
+      margin-top: 0;
+    }
+
+    /* Button state rows */
+    .sg-states {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: var(--space-7) var(--space-8);
+    }
+
+    .sg-state {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .sg-caption {
+      font-size: var(--fs-2xs);
+      letter-spacing: var(--ls-micro);
+      line-height: var(--lh-snug);
+      text-transform: uppercase;
+      color: var(--color-text-subtle);
+    }
+
+    /* Type scale rows */
+    .sg-type-row {
+      display: grid;
+      gap: var(--space-3);
+      padding-block: var(--space-6);
+      border-top: var(--border-hairline) solid var(--color-border);
+    }
+
+    .sg-type-row:last-child {
+      border-bottom: var(--border-hairline) solid var(--color-border);
+    }
+
+    /* Image placeholder inside cards */
+    .sg-placeholder {
+      display: grid;
+      place-items: center;
+      background-color: var(--color-bg);
+    }
+
+    /* --bp-md */
+    @media (min-width: 981px) {
+      .sg-type-row {
+        grid-template-columns: calc(var(--space-14) * 2) minmax(0, 1fr);
+        align-items: baseline;
+        gap: var(--space-7);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <header class="sg-intro">
+      <h1>Styleguide</h1>
+      <p>Dev-only page. Every pattern from design-system.md §5 with placeholder content. Not linked from the site. Navbar, hero and footer are not built yet.</p>
+    </header>
+
+    <!-- ===================================================== Type scale -->
+    <section class="sg-block" aria-labelledby="sg-type">
+      <h2 class="sg-label" id="sg-type">Type scale</h2>
+
+      <div class="sg-type-row">
+        <span class="sg-caption">Display · <code>.display</code></span>
+        <p class="display">You are <em>invited</em> to the Homecoming</p>
+      </div>
+      <div class="sg-type-row">
+        <span class="sg-caption">H1 · page title · <code>.page-title</code></span>
+        <p class="page-title">Kindly <em>reply</em></p>
+      </div>
+      <div class="sg-type-row">
+        <span class="sg-caption">H2 · section heading · <code>h2</code></span>
+        <h2>Program of <em>Activities</em></h2>
+      </div>
+      <div class="sg-type-row">
+        <span class="sg-caption">Lead · <code>.lead</code></span>
+        <p class="lead">Sixty years of classmates, coming home.</p>
+      </div>
+      <div class="sg-type-row">
+        <span class="sg-caption">Card title · <code>.card__title</code></span>
+        <p class="card__title">Placeholder announcement title</p>
+      </div>
+      <div class="sg-type-row">
+        <span class="sg-caption">Value · <code>.value</code></span>
+        <p class="value">[EVENT DATE] · [VENUE]</p>
+      </div>
+      <div class="sg-type-row">
+        <span class="sg-caption">Body · <code>p</code></span>
+        <p>Body copy in Inter at 16px with a 1.55 line height. Names and emphasis use <em>italic paper</em> to stand out from the text around them.</p>
+      </div>
+      <div class="sg-type-row">
+        <span class="sg-caption">Eyebrow · <code>.eyebrow</code></span>
+        <p><span class="eyebrow">60th Anniversary</span></p>
+      </div>
+      <div class="sg-type-row">
+        <span class="sg-caption">Micro label · <code>.micro-label</code></span>
+        <p class="micro-label">Days · Hrs · Min · Sec</p>
+      </div>
+    </section>
+
+    <!-- ================================================= Section header -->
+    <section class="sg-block" aria-labelledby="sg-section-head">
+      <h2 class="sg-label" id="sg-section-head">Section header <code>.section-head</code></h2>
+
+      <h3 class="sg-sub">Left-aligned (default)</h3>
+      <div class="section-head">
+        <span class="eyebrow">What's new</span>
+        <h2>Latest <em>Announcements</em></h2>
+        <p class="section-head__intro">Optional supporting paragraph. Placeholder copy that explains what this section holds, kept to a comfortable reading width.</p>
+      </div>
+
+      <h3 class="sg-sub">Centered <code>.section-head--center</code></h3>
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Counting down to [EVENT DATE]</span>
+        <h2>Until we <em>meet</em></h2>
+      </div>
+    </section>
+
+    <!-- ======================================================== Buttons -->
+    <section class="sg-block" aria-labelledby="sg-buttons">
+      <h2 class="sg-label" id="sg-buttons">Buttons <code>.btn</code></h2>
+
+      <h3 class="sg-sub">Primary <code>.btn--primary</code></h3>
+      <div class="sg-states">
+        <div class="sg-state">
+          <a class="btn btn--primary" href="#sg-buttons">RSVP <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Default</span>
+        </div>
+        <div class="sg-state">
+          <a class="btn btn--primary" href="#sg-buttons" data-preview="hover">RSVP <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Hover</span>
+        </div>
+        <div class="sg-state">
+          <a class="btn btn--primary" href="#sg-buttons" data-preview="focus">RSVP <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Focus</span>
+        </div>
+        <div class="sg-state">
+          <button class="btn btn--primary" type="button" disabled>RSVP <span class="btn__arrow" aria-hidden="true">→</span></button>
+          <span class="sg-caption">Disabled</span>
+        </div>
+      </div>
+
+      <h3 class="sg-sub">Ghost <code>.btn--ghost</code></h3>
+      <div class="sg-states">
+        <div class="sg-state">
+          <a class="btn btn--ghost" href="#sg-buttons">View program <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Default</span>
+        </div>
+        <div class="sg-state">
+          <a class="btn btn--ghost" href="#sg-buttons" data-preview="hover">View program <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Hover</span>
+        </div>
+        <div class="sg-state">
+          <a class="btn btn--ghost" href="#sg-buttons" data-preview="focus">View program <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Focus</span>
+        </div>
+        <div class="sg-state">
+          <a class="btn btn--ghost" aria-disabled="true">View program <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Disabled (link)</span>
+        </div>
+      </div>
+
+      <h3 class="sg-sub">Small ghost link <code>.btn--small</code></h3>
+      <div class="sg-states">
+        <div class="sg-state">
+          <a class="btn btn--small" href="#sg-buttons">Read more <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Default</span>
+        </div>
+        <div class="sg-state">
+          <a class="btn btn--small" href="#sg-buttons" data-preview="hover">Read more <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Hover</span>
+        </div>
+        <div class="sg-state">
+          <a class="btn btn--small" href="#sg-buttons" data-preview="focus">Read more <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Focus</span>
+        </div>
+        <div class="sg-state">
+          <button class="btn btn--small" type="button" disabled>Read more <span class="btn__arrow" aria-hidden="true">→</span></button>
+          <span class="sg-caption">Disabled</span>
+        </div>
+      </div>
+
+      <h3 class="sg-sub">Text arrow link <code>.link-arrow</code></h3>
+      <div class="sg-states">
+        <div class="sg-state">
+          <a class="link-arrow" href="#sg-buttons">See full schedule <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Default</span>
+        </div>
+        <div class="sg-state">
+          <a class="link-arrow" href="#sg-buttons" data-preview="hover">See full schedule <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Hover</span>
+        </div>
+        <div class="sg-state">
+          <a class="link-arrow" href="#sg-buttons" data-preview="focus">See full schedule <span class="btn__arrow" aria-hidden="true">→</span></a>
+          <span class="sg-caption">Focus</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================== Countdown -->
+    <section class="sg-block" aria-labelledby="sg-countdown">
+      <h2 class="sg-label" id="sg-countdown">Countdown <code>.countdown</code></h2>
+
+      <div class="section-head section-head--center">
+        <span class="eyebrow">Counting down to [EVENT DATE]</span>
+      </div>
+      <ul class="countdown" role="list" aria-label="Time until the homecoming" aria-live="off">
+        <li class="countdown__cell">
+          <span class="countdown__value">128</span>
+          <span class="countdown__unit">Days</span>
+        </li>
+        <li class="countdown__cell">
+          <span class="countdown__value">07</span>
+          <span class="countdown__unit">Hrs</span>
+        </li>
+        <li class="countdown__cell">
+          <span class="countdown__value">42</span>
+          <span class="countdown__unit">Min</span>
+        </li>
+        <li class="countdown__cell">
+          <span class="countdown__value">09</span>
+          <span class="countdown__unit">Sec</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ================================================== Announcements -->
+    <section class="sg-block" aria-labelledby="sg-cards">
+      <h2 class="sg-label" id="sg-cards">Announcement cards <code>.card</code></h2>
+
+      <div class="card-grid">
+        <article class="card">
+          <div class="card__media">
+            <div class="sg-placeholder" role="img" aria-label="Image placeholder">
+              <span class="micro-label">[IMAGE 16:9]</span>
+            </div>
+          </div>
+          <time class="card__date" datetime="2026-01-01">[DATE]</time>
+          <h3 class="card__title">Placeholder title for a card with an image</h3>
+          <p class="card__text">Placeholder description. Two or three short lines that summarize the announcement and invite the reader to learn more.</p>
+          <a class="btn btn--small card__action" href="#sg-cards">Read more <span class="btn__arrow" aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="card">
+          <time class="card__date" datetime="2026-01-01">[DATE]</time>
+          <h3 class="card__title">Placeholder title for a text-only card</h3>
+          <p class="card__text">Placeholder description. Text-only cards stretch to match their neighbors, and the link stays pinned to the bottom.</p>
+          <a class="btn btn--small card__action" href="#sg-cards">Read more <span class="btn__arrow" aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================== Program timeline -->
+    <section class="sg-block" aria-labelledby="sg-program">
+      <h2 class="sg-label" id="sg-program">Program timeline <code>.timeline</code> · <code>.meta-list</code> · <code>.date-lockup</code></h2>
+
+      <h3 class="sg-sub">Accent rule + label/value rows <code>.accent-rule</code> <code>.meta-list</code></h3>
+      <span class="accent-rule" aria-hidden="true"></span>
+      <dl class="meta-list">
+        <div class="meta-list__row">
+          <dt class="micro-label">Date</dt>
+          <dd class="value">[DATE]</dd>
+          <dd class="meta-list__sub">[Weekday]</dd>
+        </div>
+        <div class="meta-list__row">
+          <dt class="micro-label">Venues</dt>
+          <dd class="value">[Venue one]</dd>
+          <dd class="value">[Venue two]</dd>
+        </div>
+      </dl>
+
+      <h3 class="sg-sub">Timeline, with sub-items and the finale <code>.timeline__item--finale</code></h3>
+      <p class="micro-label program__schedule-label">Schedule</p>
+      <ol class="timeline" role="list">
+        <li class="timeline__item">
+          <p class="timeline__time"><time datetime="09:00">9:00 AM</time></p>
+          <div class="timeline__body">
+            <h4 class="timeline__title">[Item title]</h4>
+            <p class="micro-label timeline__venue">[Venue]</p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <p class="timeline__time"><time datetime="12:00">12:00</time> – <time datetime="13:00">1:00 PM</time></p>
+          <div class="timeline__body">
+            <h4 class="timeline__title">[Item title]</h4>
+            <p class="micro-label timeline__venue">[Venue]</p>
+            <ul class="timeline__list" role="list">
+              <li>[Sub-item]</li>
+              <li>[Sub-item]</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline__item timeline__item--finale">
+          <p class="timeline__time">Evening</p>
+          <div class="timeline__body">
+            <h4 class="timeline__title">[Finale title]</h4>
+            <p class="micro-label timeline__venue">[Venue] · [Detail]</p>
+          </div>
+        </li>
+      </ol>
+
+      <h3 class="sg-sub">Date lockup <code>.date-lockup</code></h3>
+      <div class="date-lockup" aria-hidden="true">
+        <span class="date-lockup__day">30</span>
+        <span class="date-lockup__slash"></span>
+        <span class="date-lockup__month-year">
+          <span class="eyebrow">December</span>
+          <span class="eyebrow">2026</span>
+        </span>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

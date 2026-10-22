@@ -452,6 +452,12 @@
    Markup: section.program > .container > .program__layout
      (.program__aside + .program__schedule) + .date-lockup.
    -------------------------------------------------------------------------- */
+/* Solid ground: Program slides up over the pinned hero image (§5.2) */
+.program {
+  position: relative;
+  background-color: var(--color-bg);
+}
+
 .program__layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
@@ -718,25 +724,48 @@
 /* --------------------------------------------------------------------------
    5.2 Hero
    Markup: section.hero > .hero__media (img) + .hero__content.
-   All three scrims are layered on .hero__media::after, which paints above the
-   image; .hero__content is positioned later in the tree, so it sits on top.
+   Paint order inside the hero's stacking context (isolation):
+     .hero__media (z -1) → .hero::after scrims (z -1, later in the tree)
+     → .hero__content.
+   The scrims sit on the hero, not on the media, so they scroll with the
+   text: the center tint stays behind the stack and the bottom fade stays at
+   the hero's edge, even while the image is pinned (below).
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
+  isolation: isolate;
   display: grid;
   place-items: center;
   min-height: 100vh;
   min-height: 100svh; /* mobile: don't let browser chrome crop the hero */
   /* Center the stack in the area below the fixed bar */
   padding: calc(var(--nav-height) + var(--space-9)) var(--gutter) var(--space-11);
-  overflow: hidden;
+  /* clip-path, unlike overflow, also clips position: fixed descendants, so
+     the pinned image only ever shows inside the hero's box. As the page
+     scrolls, the next section appears to slide up over the image. */
+  clip-path: inset(0);
   background-color: var(--color-bg);
   text-align: center;
 }
 
+/* Base (and reduced motion): the image scrolls with the hero */
 .hero__media {
   position: absolute;
   inset: 0;
+  z-index: -1;
+}
+
+/* Pinned image: a position: fixed layer, not background-attachment: fixed,
+   which iOS Safari ignores. Sized to the large viewport (100lvh) so it
+   doesn't resize or leave a gap when mobile browser bars collapse. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero__media {
+    position: fixed;
+    inset: 0 0 auto;
+    height: 100vh;
+    height: 100lvh;
+    will-change: transform; /* own compositor layer: no repaint jitter on iOS */
+  }
 }
 
 .hero__media img {
@@ -746,10 +775,11 @@
   object-position: center top;
 }
 
-.hero__media::after {
+.hero::after {
   content: "";
   position: absolute;
   inset: 0;
+  z-index: -1;
   background:
     var(--gradient-scrim-top) top / 100% 30% no-repeat,
     var(--gradient-scrim-bottom) bottom / 100% 50% no-repeat,

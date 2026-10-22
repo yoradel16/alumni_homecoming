@@ -279,7 +279,8 @@ These are structure, states, and responsive behavior only. Each component uses o
 
 ### 5.2 Hero `[read]` layout, `[adapted]` content
 - **Size:** `min-height: 100vh` (`100svh` on mobile, so the browser chrome doesn't crop it). Full-width background image, `cover`, focal point near the top.
-- **Overlays:** top and bottom scrims (§1). Optional grain.
+- **Overlays:** top and bottom scrims (§1). Optional grain. The scrims scroll with the hero, not the image, so the center tint stays behind the text. `[adapted]`
+- **Pinned image** `[adapted]`: the image stays fixed while the page scrolls. The hero text scrolls normally and the Program section (solid `--color-bg`) slides up over the image. Built with a `position: fixed` image layer sized to `100lvh` and clipped to the hero with `clip-path: inset(0)`, not `background-attachment: fixed`, which iOS Safari ignores. Under `prefers-reduced-motion: reduce`, the image scrolls with the page.
 - **Content:** a centered stack, vertically centered in the area below the nav. Order:
   1. Eyebrow: "60th Anniversary Grand Homecoming" (gold, 0.32em).
   2. Preamble: "You are cordially invited to", serif 300 *italic*, `--color-text-muted`, 18px (22px from 641px). 20px below the eyebrow (24px from 641px). `[adapted]`
